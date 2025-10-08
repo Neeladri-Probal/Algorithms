@@ -1,14 +1,13 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-bool vis[1005];
 vector<int> v[1005];
-int level[1005];
+bool vis[1005];
+int parent[1005];
 void bfs(int src)
 {
     queue<int> q;
     q.push(src);
     vis[src] = 1;
-    level[src] = 0;
     while(!q.empty())
     {
         int par = q.front();
@@ -19,7 +18,7 @@ void bfs(int src)
             {
                 q.push(child);
                 vis[child] = 1;
-                level[child] = level[par] + 1;
+                parent[child] = par;
             }
         }
     }
@@ -35,32 +34,28 @@ int main()
         v[a].push_back(b);
         v[b].push_back(a);
     }
-    int src;
-    cin >> src;
-    memset(vis, -1, sizeof(vis));
-    memset(level, -1, sizeof(level));
+    memset(vis, 0, sizeof(vis));
+    memset(parent, -1, sizeof(parent));
+    int src, des;
+    cin >> src >> des;
     bfs(src);
-    for(int i=0;i<n;i++)
+    while(des!=-1)
     {
-        cout << i << " " << level[i] << endl;
+        cout << des << " ";
+        des = parent[des];
     }
-    return 0;
 }
-//hello world
 
-// Input
-
+//input
+// 6 7
 // 0 1
 // 1 2
-// 0 4
 // 1 3
-// 2 0
-// 3 4
-// 0  
+// 2 4
+// 2 5
+// 4 5 
+// 4 3
+// 0 5
 
-//Output
-//0 0
-// 1 1
-// 2 1
-// 3 2
-// 4 1
+//output
+//5 2 1 0
