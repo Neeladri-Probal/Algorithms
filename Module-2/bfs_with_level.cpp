@@ -47,7 +47,9 @@ int main()
     return 0;
 }
 // Input
-// 5 6
+// 5git config --global user.name "Your Correct Name"
+git config --global user.email "your_correct_email@example.com"
+ 6
 // 0 1
 // 1 2
 // 0 4
