@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define ll long long
+#define ll long long int
 using namespace std;
 int main()
 {
@@ -27,9 +27,9 @@ int main()
         {
             for (int j = 0; j < n; j++)
             {
-                if(adj[i][k] + adj[j][k] < adj[i][j])
+                if (adj[i][k] + adj[k][j] < adj[i][j])
                 {
-                    adj[i][j] = adj[i][k] + adj[j][k];
+                    adj[i][j] = adj[i][k] + adj[k][j];
                 }
             }
         }
@@ -46,11 +46,12 @@ int main()
     //     }
     //     cout << endl;
     // }
-    for(int i =0 ; i < n; i++)
+
+    for (int i = 0; i < n; i++)
     {
-        if(adj[i][i] < 0)
+        if (adj[i][i] < 0)
         {
-            cout << "cycle detected";
+            cout << "Cycle detected" << endl;
             break;
         }
     }
